@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "a204c6ae-b2c5-4ce9-b416-9138304f095e",
+		"name": "Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Test the data type of the response\", () => {\r",
+							"  pm.expect(pm.response.json()).to.be.an(\"Array\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains flight_number\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"flight_number\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spacexdata.com/v4/launches",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v4",
+						"launches"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
